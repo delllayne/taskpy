@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Главная - Movie App{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="hero">
+        <h1>Добро пожаловать в MovieApp</h1>
+        <p>Ваш киносправочник с системой аутентификации</p>
+        
+        {% if not request.cookies.get("session_token") %}
+        <div class="hero-actions">
+            <a href="/login" class="btn btn-primary">Войти в систему</a>
+        </div>
+        {% else %}
+        <div class="hero-actions">
+            <a href="/profile" class="btn btn-primary">Перейти в профиль</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="features">
+        <div class="feature-card">
+            <h3>🔐 Безопасная аутентификация</h3>
+            <p>Сессия длится 2 минуты с автоматическим продлением</p>
+        </div>
+        <div class="feature-card">
+            <h3>🎭 Коллекция фильмов</h3>
+            <p>Доступ к базе популярных фильмов</p>
+        </div>
+        <div class="feature-card">
+            <h3>➕ Добавление фильмов</h3>
+            <p>Возможность добавлять новые фильмы с обложками</p>
+        </div>
+    </div>
+
+    <div class="demo-info">
+        <h3>Демо доступ:</h3>
+        <div class="credentials">
+            <p><strong>Логин:</strong> admin</p>
+            <p><strong>Пароль:</strong> secret</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

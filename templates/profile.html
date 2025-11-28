@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Профиль - Movie App{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="profile-header">
+        <h1>👋 Добро пожаловать, {{ user }}!</h1>
+        <p class="login-time">Время входа: {{ login_time.strftime('%d.%m.%Y %H:%M:%S') }}</p>
+    </div>
+
+    <div class="session-info">
+        <h3>📊 Информация о сессии</h3>
+        <p>Сессия автоматически продлевается при каждом запросе</p>
+        <p>Время до истечения: <strong>2 минуты</strong></p>
+    </div>
+
+    <div class="movies-section">
+        <h3>🎭 Коллекция фильмов</h3>
+        <div class="movies-grid">
+            {% for movie in movies %}
+            <div class="movie-card">
+                <div class="movie-info">
+                    <h4>{{ movie.name }}</h4>
+                    <p class="movie-director">Режиссер: {{ movie.director }}</p>
+                    <p class="movie-cost">Стоимость: ${{ movie.cost }}</p>
+                    {% if movie.is_available %}
+                    <span class="status available">Доступен</span>
+                    {% else %}
+                    <span class="status unavailable">Не доступен</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

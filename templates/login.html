@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Вход - Movie App{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h2>Вход в систему</h2>
+            <p>Введите ваши учетные данные</p>
+        </div>
+
+        {% if error %}
+        <div class="alert alert-error">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="POST" action="/login" class="auth-form">
+            <div class="form-group">
+                <label for="username">Логин:</label>
+                <input type="text" id="username" name="username" required 
+                       placeholder="Введите ваш логин" class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" required 
+                       placeholder="Введите ваш пароль" class="form-input">
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full">
+                Войти
+            </button>
+        </form>
+
+        <div class="auth-footer">
+            <div class="demo-credentials">
+                <h4>Тестовые данные:</h4>
+                <p><strong>Логин:</strong> admin</p>
+                <p><strong>Пароль:</strong> secret</p>
+            </div>
+            <p class="session-info">⏱️ Сессия действительна 2 минуты</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

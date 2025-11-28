@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Movie App{% endblock %}</title>
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">🎬 MovieApp</div>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Главная</a>
+                {% if request.cookies.get("session_token") %}
+                <a href="/profile" class="nav-link">Профиль</a>
+                <a href="/logout" class="nav-link">Выйти</a>
+                {% else %}
+                <a href="/login" class="nav-link">Войти</a>
+                {% endif %}
+                <a href="/add_movie_form" class="nav-link">Добавить фильм</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
